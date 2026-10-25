@@ -1,0 +1,240 @@
+---
+title: Powah!
+---
+
+Powah generates, stores, and transfers Forge Energy (FE). Its Energizing Orb converts materials into components used to craft higher-tier generators, cables, storage, and charging equipment.
+
+## Getting started
+
+1. Craft Dielectric Paste and the dielectric components required by the first machines.
+2. Craft a Starter or Basic generator.
+3. Connect the generator to Energy Cables.
+4. Craft an Energizing Orb and at least one Energizing Rod.
+5. Supply FE to the rod, then insert a recipe's ingredients into the orb.
+6. Use the energized materials to craft higher-tier equipment.
+
+Use JEI for the pack's exact ingredients, output quantities, and energizing costs. The Powah Manual provides additional in-game documentation.
+
+## Tiers and progression
+
+Most Powah equipment follows this tier order:
+
+```text
+Starter → Basic → Hardened → Blazing → Niotic → Spirited → Nitro
+```
+
+| Tier | Main progression material |
+|---|---|
+| Starter | Dielectric components and basic materials |
+| Basic | Dielectric components and basic materials |
+| Hardened | Energized Steel |
+| Blazing | Blazing Crystal |
+| Niotic | Niotic Crystal |
+| Spirited | Spirited Crystal |
+| Nitro | Nitro Crystal |
+
+Higher tiers increase the relevant machine's generation, storage, transfer, or energizing capacity. Many machines have upgrade recipes that use the previous tier; check JEI before crafting another machine from scratch.
+
+The orb itself does not need to be replaced at each tier. Energizing Rods, the FE supply, and transfer infrastructure determine how quickly it can process recipes.
+
+## Energizing Orb and Energizing Rods
+
+The Energizing Orb holds ingredients. Energizing Rods supply the energy required to convert those ingredients into the recipe output.
+
+Power the rods, not the orb.
+
+```text
+Generator → Energy Cable → Energizing Rod
+                                  │
+                            energy transfer
+                                  ↓
+                            Energizing Orb
+                                  ↓
+                            Recipe output
+```
+
+### Building the first setup
+
+1. Place an Energizing Orb.
+2. Place an Energizing Rod nearby and connect it to an FE supply.
+3. Keep the rod within the orb's working range; place it close for the initial setup.
+4. Insert exactly one recipe's ingredients into the orb.
+5. Supply the required total energy.
+6. Remove the finished output.
+
+Multiple rods can serve an orb. Higher-tier rods and additional rods increase potential throughput, provided the generator and cables can supply enough FE.
+
+### Normal energizing materials
+
+| Material | Input family |
+|---|---|
+| Energized Steel | Iron and gold |
+| Blazing Crystal | Blaze materials |
+| Niotic Crystal | Diamond |
+| Spirited Crystal | Emerald |
+| Nitro Crystal | Nether Star, Redstone Blocks, and a Blazing Crystal Block |
+
+Use the individual JEI recipe for exact counts, accepted alternatives, and output quantities. Recipes can produce more than one item.
+
+## Custom bulk energizing recipes
+
+Brass, Bloom & Beyond provides block-based alternatives to the individual-material recipes.
+
+| Bulk input | Output |
+|---|---|
+| Blaze Rod Block from AllTheCompressed | Blazing Block |
+| Iron Block + Gold Block | Energized Steel Block |
+| Diamond Block | Niotic Block |
+| Emerald Block | Spirited Block |
+
+Nitro has no custom bulk option. Use the normal Nitro energizing recipe.
+
+These are Energizing Orb recipes, not ordinary crafting-grid conversions. The block ingredients go into the orb and require energy from the rods.
+
+
+## Generation options
+
+Powah provides five main generator families. Their output depends on tier, operating conditions, and pack configuration.
+
+| Generator | Input or condition | Main distinction |
+|---|---|---|
+| Furnator | Solid furnace fuels | Converts items such as coal or wood into FE |
+| Magmator | Hot fluid such as lava | Consumes a fluid fuel supply |
+| Thermo Generator | Heat source beneath it and a coolant supply | Uses the heat source rather than consuming it as Magmator fuel |
+| Solar Panel | Suitable sunlight and sky access | Output depends on environmental conditions |
+| Reactor | Uraninite and supporting resources | Multiblock generation with resource and cooling management |
+
+Use the machine interface, Manual, and relevant JEI information for actual output and accepted inputs. Fixed FE/t figures from another pack may not match this pack.
+
+### Furnator
+
+Insert a supported furnace fuel and connect an energy output. A Furnator needs no liquid supply or multiblock structure.
+
+Automating it requires item delivery and sufficient FE extraction capacity.
+
+### Magmator
+
+Supply a supported hot fluid and extract the generated FE. Lava is the standard fuel example.
+
+A Magmator consumes the fluid in its tank. Placing a lava source nearby is not a substitute for filling the machine.
+
+### Thermo Generator
+
+Place the Thermo Generator above an accepted heat source and supply coolant, such as water.
+
+```text
+     Coolant supply
+           │
+           ↓
+   [Thermo Generator] → FE output
+   [  Heat source  ]
+```
+
+The heat source and coolant affect operation. Check accepted heat sources in the installed version rather than assuming every hot-looking block works.
+
+This is different from a Magmator: a Thermo Generator uses a block or fluid beneath it as a heat source, while a Magmator consumes hot fluid from its internal tank.
+
+### Solar Panel
+
+Place the panel with sky access and connect its output.
+
+Energy Cells can buffer production for periods when solar generation is unavailable. Storage only covers the energy already accumulated; it does not increase the panel's generation rate.
+
+## Reactor
+
+Powah's Reactor is a 3×4×3 multiblock assembled from 36 Reactor blocks of the same tier.
+
+### Assembly
+
+1. Craft 36 matching Reactor blocks.
+2. Hold the blocks and place one in an unobstructed 3×4×3 build area.
+3. Allow the structure to assemble.
+4. Open the controller interface.
+5. Supply fuel, cooling, and optional supporting materials.
+6. Connect the energy output.
+
+### Reactor inputs
+
+| Resource | Purpose |
+|---|---|
+| Uraninite | Reactor fuel |
+| Liquid coolant, such as water | Cooling supply |
+| Solid coolant, such as Dry Ice | Additional cooling support |
+| Carbon material, such as coal | Supporting resource affecting reactor operation |
+| Redstone | Supporting resource affecting reactor operation |
+
+The interface shows the reactor's current resource levels and operating state. A supplied fuel slot alone does not establish that it is operating at its full potential.
+
+Dry Ice is associated with the energizing system as well as reactor cooling. Look up its production recipe in JEI when automating coolant supply.
+
+### Reactor supply layout
+
+```text
+Uraninite ───────────────┐
+Carbon material ────────┤
+Redstone ───────────────┼──→ Reactor → Energy Cell → Consumers
+Liquid coolant ────────┤
+Solid coolant ─────────┘
+```
+
+Treat these as separately managed supplies. An unrestricted mixed-item input can fill available space with one material while another resource runs out.
+
+## Energy storage and transfer
+
+### Energy Cables
+
+Energy Cables move FE between generators, storage, and consumers.
+
+Cable transfer capacity can limit a system even when the generator and consumer support higher rates. Check the cable tier as well as the connected machines.
+
+### Energy Cells
+
+Energy Cells store FE for later use.
+
+```text
+Generator → Energy Cell → Cable network → Machines
+```
+
+A buffer can sustain a short energizing operation at a rate above current generation, provided its stored energy and output rate are sufficient. It cannot sustain that deficit indefinitely.
+
+### Diagnose the limiting rate
+
+Energizing throughput can be limited by any stage:
+
+```text
+Generation
+    ↓
+Storage output rate
+    ↓
+Cable transfer rate
+    ↓
+Energizing Rod transfer rate
+    ↓
+Recipe's total energy requirement
+```
+
+Upgrading rods has little effect if their energy buffers remain empty. Adding generation has little effect if an undersized connection prevents that energy reaching the rods.
+
+## Wireless energy
+
+Powah's Ender Network uses channels to share stored energy.
+
+| Block | Function |
+|---|---|
+| Ender Cell | Provides access to an owner's network channel and manages its storage capacity |
+| Ender Gate | Connects adjacent equipment to a selected network channel |
+
+### Basic layout
+
+```text
+Generation → Ender Cell / channel storage
+                         │
+                    Ender Network
+                         │
+                         ↓
+                    Ender Gate → Machine
+```
+
+Configure the appropriate channel and network access at the endpoints. An Ender Gate does not replace the channel's storage configuration or create energy.
+
+If remote equipment receives no power, check channel selection, ownership/access, stored energy, gate orientation, and transf

@@ -1,0 +1,77 @@
+---
+title: Mekanism
+---
+
+Mekanism is a technology mod built around material processing, chemical production, automated mining, and powered equipment. Its early progression centres on the Metallurgic Infuser: this produces the alloys, circuits, and steel used to build the rest of the machinery.
+
+## Starting Mekanism
+
+### 1. Power a Metallurgic Infuser
+
+Craft a Heat Generator and a Metallurgic Infuser. Supply the generator with combustible fuel, then connect its output to the infuser. The Heat Generator can also generate power passively from adjacent lava.
+
+The infuser combines a main ingredient with an infusion material:
+
+- Iron + redstone infusion → Infused Alloy.
+- Osmium + redstone infusion → Basic Control Circuit.
+- Iron + carbon infusion → Enriched Iron.
+
+The main ingredient and infusion material use separate inputs. Check the JEI recipe and the machine interface rather than putting both into the same slot.
+
+[Heat Generator](https://wiki.aidancbrady.com/wiki/Heat_Generator) · [Metallurgic Infuser](https://wiki.aidancbrady.com/wiki/Metallurgic_Infuser)
+
+### 2. Make steel
+
+Steel requires two carbon-infusion operations followed by smelting:
+
+```text
+Iron → Enriched Iron → Steel Dust → Steel Ingot
+       carbon          carbon       smelting
+```
+
+Use the resulting steel to make Steel Casings for additional machines.
+
+[Full starting walkthrough](https://wiki.aidancbrady.com/wiki/Tutorials/Getting_Started)
+
+### 3. Build an Enrichment Chamber
+
+The Enrichment Chamber processes supported ores into dust and prepares concentrated infusion materials.
+
+Enriching carbon sources and redstone before using them in the Metallurgic Infuser makes the infusion supply more efficient. These enriched materials are inputs for the infuser, not substitutes for its main ingredient.
+
+Add an Energized Smelter to turn dusts into ingots. Check JEI for the exact output: raw ore and Silk-Touched ore blocks do not necessarily have the same processing ratio.
+
+[Enrichment Chamber](https://wiki.aidancbrady.com/wiki/Enrichment_Chamber) · [Ore-processing guide](https://wiki.aidancbrady.com/wiki/Ore_Processing)
+
+## Connecting machines
+
+Mekanism uses different transport types for each resource:
+
+- Universal Cables: energy.
+- Logistical Transporters: items.
+- Mechanical Pipes: fluids.
+- Pressurized Tubes: chemicals.
+
+Use the machine's side-configuration interface to assign inputs and outputs. Enable automatic ejection when the machine should push its output into the next connection.
+
+The Configurator changes connection modes. A Configuration Card copies side settings between machines of the same type.
+
+[Configurator](https://wiki.aidancbrady.com/wiki/Configurator) · [Configuration Card](https://wiki.aidancbrady.com/wiki/Configuration_Card)
+
+## Further progression
+
+Mekanism branches into several projects rather than one compulsory machine chain:
+
+- [Ore processing](https://wiki.aidancbrady.com/wiki/Ore_Processing): higher-yield processing with additional machines and chemicals.
+- [Digital Miner](https://wiki.aidancbrady.com/wiki/Digital_Miner): targeted mining using block filters and an adjustable working area.
+- [Induction Matrix](https://wiki.aidancbrady.com/wiki/Induction_Matrix): multiblock energy storage; Cells provide capacity and Providers provide transfer rate.
+- [MekaSuit](https://wiki.aidancbrady.com/wiki/Mekasuit): modular powered armor.
+- [Equipment modules](https://wiki.aidancbrady.com/wiki/Modules): upgrades installed through a Modification Station.
+- [Fission Reactor tutorial](https://wiki.aidancbrady.com/wiki/Fission_Reactor_Tutorial): reactor construction and its supporting systems.
+- [Radiation](https://wiki.aidancbrady.com/wiki/Radiation): mechanics relevant to reactors and radioactive chemicals.
+
+## Guides and help
+
+- [Getting started](https://wiki.aidancbrady.com/wiki/Tutorials/Getting_Started)
+- [Progression from first materials to advanced systems](https://wiki.aidancbrady.com/wiki/From_A_To_Z)
+- [Official Mekanism wiki](https://wiki.aidancbrady.com/wiki/Main_Page)

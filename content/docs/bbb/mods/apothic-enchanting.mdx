@@ -1,0 +1,508 @@
+---
+title: Apothic Enchanting
+---
+
+Apothic Enchanting replaces vanilla enchanting's bookshelf count with a configurable set of stats. Different shelves control enchanting strength, randomness, enchantment selection, and additional features such as treasure enchantments and filtering.
+
+It also adds enchantment storage, targeted enchanting tomes, and tools for extracting enchantments from equipment. It is separate from Apotheosis's affix equipment, gems, and reforging systems.
+
+## How enchanting works
+
+An Enchanting Table gathers stats from surrounding blocks. Place an item and lapis in the table, then hover over the available options to inspect the result and cost.
+
+The main stats are Eterna, Quanta, and Arcana. Secondary effects control previews, stability, treasure enchantments, and filtering.
+
+| Stat or effect | What it changes |
+|---|---|
+| Eterna | Maximum enchanting level available at the table |
+| Quanta | Random variation in enchanting power |
+| Arcana | Enchantment rarity weighting and the number of enchantments received |
+| Enchanting Clues | How many enchantments appear in the preview |
+| Quantic Stability | Prevents Quanta from reducing enchanting power |
+| Allows Treasure | Adds eligible treasure enchantments to the available pool |
+| Enchantment Filters | Removes selected enchantments from the available pool |
+
+These effects come from different blocks. Maximising the three main bars does not automatically enable every secondary feature.
+
+### Eterna is not an enchantment's level
+
+A table with 100 Eterna does not produce Sharpness C or Protection C.
+
+Eterna controls enchanting strength. The result still depends on the enchantment's supported levels, power requirements, item compatibility, and the table's other stats. The default overhaul increases the table's maximum enchanting level to 100 and increases the maximum levels of many enchantments.
+
+## Bookshelf placement
+
+The table reads a 5×5 perimeter around itself:
+
+- Sixteen positions at the table's height.
+- Sixteen positions one block above.
+- Thirty-two possible positions in total.
+- A one-block gap between the table and the surrounding shelves.
+
+Skulls, candles, and other stat-providing blocks must also occupy valid shelf positions. Keep the intervening spaces clear so the table can read the blocks.
+
+
+There is no unique arrangement for each setup below. Its blocks can occupy any valid positions, provided they are all readable by the table.
+
+## Understanding the stats
+
+### Eterna: enchanting strength
+
+Ordinary bookshelves provide 2 Eterna each, up to a contribution limit of 30. Fifteen provide a level-30 setup.
+
+Higher-tier shelves have higher limits. The table counts lower-limit contributions first, then higher-limit contributions. For example, fifteen ordinary bookshelves provide 30 Eterna; adding one Hellshelf raises that to 33 rather than making the ordinary shelves stop working.
+
+The practical consequence: a Draconic Endshelf contributes 20 Eterna up to a limit of 100. It does not provide 100 Eterna on its own.
+
+### Quanta: variation in power
+
+Quanta increases variation in the enchanting calculation.
+
+Without Quantic Stability, that variation can reduce or increase effective power. With stability, Quanta can only be beneficial. Higher Quanta is therefore not automatically an improvement on an unstable table.
+
+### Arcana: enchantment selection
+
+Arcana increases the number of enchantments received and changes rarity weighting so rarer enchantments become more common.
+
+It does not mean every enchantment gets stronger. A high-Arcana table and a low-Arcana table can be useful for different targets.
+
+The item being enchanted can also affect the final result through enchantability. Compare results using the same item type when testing different shelf arrangements.
+
+### Clues: previews, not extra enchantments
+
+Clues increase how many enchantments are revealed before confirming an operation. They do not directly increase enchantment strength or add more enchantments.
+
+Hellshelves of Sight and Hellshelves of Masterful Sight provide additional clues.
+
+## Shelf progression
+
+The main progression is:
+
+```text
+Ordinary Bookshelves
+        ↓
+Hellshelves / Seashelves
+        ↓
+Infused shelves
+        ↓
+Glowing / Crystalline shelves
+        ↓
+Deepshelves and their variants
+        ↓
+Sculkshelves
+        ↓
+Endshelves
+        ↓
+Draconic Endshelf
+```
+
+Shelf crafting and infusion requirements make the intermediate stages useful even when materials for later shelves are available. Use JEI for the pack's current recipes.
+
+### Useful shelf values
+
+These are default contributions per block. Percentages are added before the table clamps the final Quanta and Arcana values.
+
+| Block | Eterna | Eterna limit | Quanta | Arcana | Additional effect |
+|---|---:|---:|---:|---:|---|
+| Ordinary Bookshelf | +2 | 30 | — | — | — |
+| Seashelf | +3 | 45 | — | +3% | — |
+| Hellshelf | +3 | 45 | +3% | — | — |
+| Infused Seashelf | +5 | 60 | — | +5% | — |
+| Infused Hellshelf | +5 | 60 | +5% | — | — |
+| Crystalline Seashelf | +5 | 60 | +3% | +5% | — |
+| Glowing Hellshelf | +5 | 60 | +5% | About +3.33% | — |
+| Deepshelf | +5 | 70 | +5% | +5% | — |
+| Echoing Deepshelf | +5 | 75 | — | +15% | — |
+| Soul-Touched Deepshelf | +5 | 75 | +15% | — | — |
+| Echoing Sculkshelf | +10 | 80 | +10% | +15% | +1 clue |
+| Soul-Touched Sculkshelf | +10 | 80 | +15% | +10% | +1 clue |
+| Pearlescent Endshelf | +10 | 90 | +7.5% | +7.5% | — |
+| Draconic Endshelf | +20 | 100 | — | — | — |
+| Geode-Encased Bookshelf of Stability | +10 | 60 | −15% | — | Quantic Stability |
+| Deepshelf of Arcane Treasures | +10 | 70 | −15% | −15% | Treasure enchantments |
+| Melonshelf | −2 | — | −10% | — | Stat adjustment |
+| Stoneshelf | −3 | — | — | −7.5% | Stat adjustment |
+
+The table starts with 15% Quanta before block contributions. This is why a setup with no Quanta-providing shelves can still display 15%. The example calculations below include that baseline.
+
+## Infusion enchanting
+
+Infusion uses the Enchanting Table as a crafting station. Instead of adding enchantments, it converts an input into another item.
+
+1. Look up the output's infusion recipe in JEI.
+2. Configure the required Eterna, Quanta, and Arcana.
+3. Place one input item and the required enchanting fuel in the table.
+4. Select the infusion option.
+5. The input is converted into the recipe output.
+
+Some recipes specify upper limits as well as minimums. A stronger table can therefore fail a recipe that a lower-stat table can perform.
+
+### Important infusion requirements
+
+These are default requirements from the mod's 1.21 source data. JEI takes precedence if the pack changes them.
+
+| Output | Input | Eterna | Quanta | Arcana |
+|---|---|---:|---:|---:|
+| Infused Seashelf | Seashelf | At least 45 | At least 15% | At least 10% |
+| Infused Hellshelf | Hellshelf | At least 45 | At least 30% | No additional minimum |
+| Deepshelf | Dormant Deepshelf | At least 60 | At least 40% | At least 40% |
+| Infused Dragon's Breath | Dragon's Breath | At least 80 | 15–30% | At least 60% |
+| Library of Alexandria | Enchantment Library | 100 | 45–50% | 100% |
+
+An all-100 setup cannot perform the last two recipes because its Quanta is too high.
+
+## Example enchanting setups
+
+The following are complete block lists, not additions to an unspecified existing setup.
+
+Their displayed values assume:
+
+- Default shelf stats and the normal 15% base Quanta.
+- Every listed block is in a valid position.
+- No unlisted blocks contribute stats.
+- No pack-specific changes or player-specific restrictions reduce usable Eterna.
+
+These are calculated configurations, not claims of an optimal or cheapest arrangement. Negative-Eterna blocks and contribution limits are included in the calculations.
+
+### 1. Basic level-30 table
+
+Place:
+
+- 15 ordinary Bookshelves.
+
+| Eterna | Quanta | Arcana | Stability |
+|---:|---:|---:|---|
+| 30 | 15% | 0% | No |
+
+This is the ordinary bookshelf starting point.
+
+### 2. Seashelf infusion station
+
+Place:
+
+- 15 Seashelves.
+
+| Eterna | Quanta | Arcana | Stability |
+|---:|---:|---:|---|
+| 45 | 15% | 45% | No |
+
+This meets the requirements for Infused Seashelves.
+
+Craft sixteen Seashelves: place fifteen and infuse the spare. Replace a placed Seashelf with the infused version, then infuse the shelf that was removed. Repeat as required. The infused shelves increase Eterna and Arcana without removing the base Quanta required by the recipe.
+
+### 3. Hellshelf infusion station
+
+Place:
+
+- 15 Hellshelves.
+
+| Eterna | Quanta | Arcana | Stability |
+|---:|---:|---:|---|
+| 45 | 60% | 0% | No |
+
+This meets the requirements for Infused Hellshelves.
+
+The same spare-shelf method works: fifteen placed shelves plus one input, replacing placed shelves with their infused versions as the process continues.
+
+### 4. Crystalline level-60 station
+
+Place:
+
+- 12 Crystalline Seashelves.
+
+| Eterna | Quanta | Arcana | Stability |
+|---:|---:|---:|---|
+| 60 | 51% | 60% | No |
+
+This meets all three requirements for converting Dormant Deepshelves into Deepshelves.
+
+Merely reaching 60 Eterna is not enough for that infusion; the recipe also requires 40% Quanta and 40% Arcana.
+
+### 5. Glowing level-60 alternative
+
+Place:
+
+- 13 Glowing Hellshelves.
+
+| Eterna | Quanta | Arcana | Stability |
+|---:|---:|---:|---|
+| 60 | 80% | About 43.3% | No |
+
+This also meets the Deepshelf infusion requirements. It provides an alternative route from the Hellshelf progression.
+
+### 6. Basic level-70 station
+
+Place:
+
+- 14 Deepshelves.
+
+| Eterna | Quanta | Arcana | Stability |
+|---:|---:|---:|---|
+| 70 | 85% | 70% | No |
+
+This demonstrates the next Eterna tier. The Quanta is high, but the arrangement does not provide stability. A Geode-Encased Bookshelf of Stability can be added to enable it; that also reduces Quanta by 15 percentage points.
+
+### 7. Stable level-80 station
+
+Place:
+
+- 8 Echoing Sculkshelves.
+- 1 Geode-Encased Bookshelf of Stability.
+
+| Eterna | Quanta | Arcana | Stability |
+|---:|---:|---:|---|
+| 80 | 80% | 100% | Yes |
+
+The Sculkshelves also provide eight additional clues.
+
+This is an enchanting configuration, not yet a Dragon's Breath infusion configuration: its Quanta exceeds that recipe's maximum.
+
+### 8. Dragon's Breath infusion station
+
+Place:
+
+- 8 Echoing Sculkshelves.
+- 1 Geode-Encased Bookshelf of Stability.
+- 5 Melonshelves.
+
+| Eterna | Quanta | Arcana | Stability |
+|---:|---:|---:|---|
+| 80 | 30% | 100% | Yes |
+
+This meets the default Infused Dragon's Breath requirements.
+
+The Melonshelves lower Quanta into the permitted range. The stability shelf's −15% Quanta contribution is part of this arrangement.
+
+### 9. Maximum-stat stable enchanting
+
+Place:
+
+- 8 Echoing Sculkshelves.
+- 1 Geode-Encased Bookshelf of Stability.
+- 1 Draconic Endshelf.
+- 2 Wither Skeleton Skulls.
+
+| Eterna | Quanta | Arcana | Stability |
+|---:|---:|---:|---|
+| 100 | 100% | 100% | Yes |
+
+This uses twelve positions.
+
+It does not enable treasure enchantments. Maximum primary stats and treasure access are separate properties.
+
+### 10. Maximum-stat treasure enchanting
+
+Place:
+
+- 4 Echoing Sculkshelves.
+- 4 Soul-Touched Sculkshelves.
+- 1 Geode-Encased Bookshelf of Stability.
+- 1 Deepshelf of Arcane Treasures.
+- 1 Echoing Deepshelf.
+- 1 Soul-Touched Deepshelf.
+- 1 Draconic Endshelf.
+
+| Eterna | Quanta | Arcana | Stability | Treasure |
+|---:|---:|---:|---|---|
+| 100 | 100% | 100% | Yes | Enabled |
+
+This thirteen-block arrangement combines maximum primary stats, stability, and treasure access. The two Deepshelf variants compensate for secondary-stat reductions from the utility shelves.
+
+Treasure access also makes curses relevant to the available pool. Use filtering when excluding specific unwanted enchantments.
+
+### 11. Library of Alexandria infusion
+
+Place:
+
+- 8 Echoing Sculkshelves.
+- 1 Geode-Encased Bookshelf of Stability.
+- 1 Draconic Endshelf.
+- 3 Melonshelves.
+
+| Eterna | Quanta | Arcana | Stability |
+|---:|---:|---:|---|
+| 100 | 50% | 100% | Yes |
+
+Place an Enchantment Library into the table to perform its infusion.
+
+This arrangement meets the required 45–50% Quanta window. Increasing Quanta to 100% prevents the recipe from matching.
+
+### 12. Low-Arcana enchanting alternative
+
+Place:
+
+- 10 Pearlescent Endshelves.
+- 10 Stoneshelves.
+- 1 Geode-Encased Bookshelf of Stability.
+- 1 Draconic Endshelf.
+- 5 ordinary Skeleton or Zombie Skulls.
+
+| Eterna | Quanta | Shelf Arcana | Stability |
+|---:|---:|---:|---|
+| 100 | 100% | 0% | Yes |
+
+This occupies twenty-seven positions, so both shelf layers are required.
+
+Use it as an alternative rarity-weighting profile, not as a guaranteed recipe for a particular enchantment. Item enchantability can still affect the final calculation. Check the available-enchantment information for the actual item being enchanted.
+
+## Stat-adjustment blocks
+
+These blocks are useful when configuring an infusion window or changing an existing table.
+
+| Block | Adjustment | Other consequence |
+|---|---|---|
+| Melonshelf | −10% Quanta | −2 Eterna |
+| Stoneshelf | −7.5% Arcana | −3 Eterna |
+| Ordinary Skeleton or Zombie Skull | +5% Quanta | Uses a shelf position |
+| Wither Skeleton Skull | +10% Quanta | Uses a shelf position |
+| Geode-Encased Bookshelf of Stability | −15% Quanta | Enables stability and contributes Eterna |
+| Candle | Adds Arcana | Contribution changes with candle count |
+
+These blocks can affect more than one stat. Adding Melonshelves can also lower Eterna, particularly when the existing shelves have little contribution headroom.
+
+## Targeted enchanting with tomes
+
+Ordinary books can receive a broad range of enchantments. Item-specific tomes restrict the pool to enchantments applicable to their category.
+
+Examples include:
+
+- Tome of Weaponry.
+- Tome of the Miners.
+- Tome of Helmets.
+- Tome of Chestplates.
+- Tome of Legplates.
+- Tome of Boots.
+- Tome of the Archers.
+- Tome of the Fishers.
+
+Enchant the appropriate tome when targeting a category rather than processing ordinary books indiscriminately. Tomes narrow the eligible pool; they do not guarantee a specific enchantment.
+
+## Extracting enchantments from equipment
+
+| Item | Enchantments recovered | Original equipment |
+|---|---|---|
+| Tome of Scrapping | Half | Destroyed |
+| Tome of Superior Scrapping | All | Destroyed |
+| Tome of Extraction | All | Preserved |
+
+These are different operations, not interchangeable tiers of the same cost.
+
+## Enchantment Library
+
+The Enchantment Library converts enchanted books into stored enchantment points.
+
+1. Insert enchanted books into the blue input slot.
+2. Search for an enchantment by name.
+3. Click its entry to extract it.
+4. Shift-click to extract the highest available level.
+5. Use the item filter to show enchantments applicable to a particular item.
+
+### Points and highest-known level
+
+Each enchantment level represents twice as many points as the previous level:
+
+| Enchantment level | Points |
+|---:|---:|
+| I | 1 |
+| II | 2 |
+| III | 4 |
+| IV | 8 |
+| V | 16 |
+
+The library also records the highest level inserted for each enchantment.
+
+For example, storing enough Sharpness I books does not automatically unlock Sharpness V extraction. The library must first receive Sharpness V, after which lower-level books can contribute points towards further withdrawals at that level.
+
+### Separate enchantments from mixed books
+
+The library stores each enchantment separately. A book containing several enchantments can therefore supply a new book containing only the selected enchantment.
+
+The library accepts enchanted books, not ordinary enchanted equipment. Extract the equipment's enchantments first.
+
+### Capacity matters
+
+The library has a per-enchantment point limit. Additional points beyond capacity can be voided.
+
+Check stored totals before inserting large batches. Upgrade to the Library of Alexandria when the normal library's capacity becomes restrictive.
+
+## Treasure enchantments and filtering
+
+A Deepshelf of Arcane Treasures enables eligible treasure enchantments at the table. This can include enchantments such as Mending, but treasure access also includes curses.
+
+A Seashelf of Aquatic Filtration lets you exclude selected enchantments by inserting enchanted books.
+
+Use separate single-enchantment books when configuring the filter so each excluded enchantment is explicit. Check the table's available pool afterwards.
+
+Filtering shelves can have dynamic stat contributions. Recheck the table after configuring one rather than assuming its stats remain unchanged.
+
+## Useful mechanics and tips
+
+### Keep enchanting and infusion configurations separate
+
+A maximum-stat table is not a universal crafting station.
+
+Two particularly useful presets are:
+
+```text
+General high-stat enchanting
+100 Eterna / 100% Quanta / 100% Arcana
+Quantic Stability enabled
+
+Library of Alexandria infusion
+100 Eterna / 45–50% Quanta / 100% Arcana
+```
+
+Dragon's Breath infusion needs a different Quanta window again. Separate stations or clearly labelled replacement blocks make those changes reproducible.
+
+### Inspect the available-enchantment information
+
+The table's information screen shows the available enchantments and power information for the selected item.
+
+Use it to check whether the desired enchantment is actually eligible before repeatedly enchanting. High stats do not override item restrictions, treasure requirements, filters, or enchantment power ranges.
+
+### More power is not always the same as more choice
+
+Enchantments have power requirements and ranges. A configuration that produces stronger results can change which enchantment levels are available.
+
+When targeting a specific enchantment, inspect its availability rather than assuming the highest possible table settings are always correct.
+
+### Clues do not reroll the result
+
+Adding clues reveals more information. It does not add enchantments to the result.
+
+Likewise, repeatedly reopening the table is not a reliable reroll method: enchanting outcomes depend on the enchanting seed and selected conditions.
+
+### Experience requirements and experience consumed are different
+
+The displayed enchanting level is an access requirement, not a statement that the operation removes that many levels.
+
+Apothic Enchanting normalises experience costs using raw experience rather than simply subtracting levels from the player's current level. Read the displayed cost instead of interpreting a level-100 option as consuming 100 levels.
+
+### Do not copy old Rectification layouts directly
+
+Older Apotheosis guides may describe Rectification and shelves that do not match the current system.
+
+This guide uses Quantic Stability. Compare the item names and tooltips before using a layout from another Minecraft version.
+
+## Enchantments with important trade-offs
+
+Several enchantments change how a tool or weapon behaves rather than simply increasing a number.
+
+| Enchantment | Effect | Important distinction |
+|---|---|---|
+| Knowledge of the Ages | Converts enemy drops into experience | Changes a weapon from item collection towards XP generation |
+| Scavenger | Gives killed mobs a chance to roll their loot tables twice | A loot-related effect, not simply additional weapon damage |
+| Miner's Fervor | Makes mining very fast but prevents instant mining | Not equivalent to an unrestricted Efficiency upgrade |
+| Stable Footing | Removes the mining-speed penalty for flying | Relevant when mining while airborne |
+| Life-Mending | Uses received healing to repair equipment | Uses healing rather than functioning like ordinary XP-based Mending |
+| Nature's Blessing | Allows hoes to bonemeal crops | Adds an active farming function |
+| Boon of the Earth | Can produce ores while mining stone | Adds resource generation to mining |
+| Occult Aversion | Reduces magic damage dealt and received | Can reduce outgoing magic damage as well as incoming damage |
+
+## Useful links
+
+- [Apothic Enchanting — official project page](https://www.curseforge.com/minecraft/mc-mods/apothic-enchanting)
+- [Official source — Minecraft 1.21 branch](https://github.com/Shadows-of-Fire/Apothic-Enchanting/tree/1.21)
+- [Default shelf stats](https://github.com/Shadows-of-Fire/Apothic-Enchanting/tree/1.21/src/main/resources/data/apothic_enchanting/enchanting_stats)
+- [Default infusion recipes](https://github.com/Shadows-of-Fire/Apothic-Enchanting/tree/1.21/src/main/resources/data/apothic_enchanting/recipe/infusion)
+- [Independent shelf calculator](https://easterechidna.github.io/AEcalculator/)
